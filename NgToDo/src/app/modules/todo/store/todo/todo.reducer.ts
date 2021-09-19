@@ -34,5 +34,5 @@ export const todoReducer = (state=initialState, action: TodoActions) =>{
     default:
       return state;
   }
-  
+
 } // редюсер который принимает стейт, акшины и возвращает  стейт
