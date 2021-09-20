@@ -1,9 +1,11 @@
 import {Action} from "@ngrx/store";
+import {TodoState} from "./todo.reducer";
 export enum todoActionsType  {
   create ='[TODO] create todo item',    //когда будут происходить action в консоли я буду знать какой модуль отвечат за них
   toggle ='[TODO] toggle todo item',
   delete ='[TODO] delete todo item',
   edit ='[TODO] edit todo item',
+  load ='[TODO] load todo state',
 }
 
 
@@ -38,4 +40,13 @@ export  class TodoEditAction implements Action {
   }
 }
 
-export type TodoActions = TodoCreateAction | TodoDeleteAction | TodoToggleAction | TodoEditAction ;
+
+export  class TodoLoadStateAction implements Action {
+  readonly type = todoActionsType.load;
+  constructor(public payload:{state: TodoState}) {
+
+  }
+}
+
+
+export type TodoActions = TodoCreateAction | TodoDeleteAction | TodoToggleAction | TodoEditAction | TodoLoadStateAction;

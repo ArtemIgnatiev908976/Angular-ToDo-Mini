@@ -29,6 +29,9 @@ import { TodoListItemEditUiComponent } from './ui/todo-list-item-edit-ui/todo-li
     RouterModule.forChild(todoRoutes),
     FormsModule,
 //регистрируем редюсер под определенным ключом
+  ],
+  exports:[
+    TodoWidgetComponent
   ]
 })
 export class TodoModule { }

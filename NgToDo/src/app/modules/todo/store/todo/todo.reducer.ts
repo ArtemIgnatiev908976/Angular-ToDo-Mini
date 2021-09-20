@@ -40,16 +40,6 @@ export const todoReducer = (state = initialState, action: TodoActions) => {
         } : todo)
       };
 
-
-    case todoActionsType.delete:
-      return {
-        ...state,
-        todoList: state.todoList.filter(todo => todo.id !== action.payload.id),  // избавляемся от записей которыые совпадают по id
-      }
-    default:
-      return state;
-
-
     case todoActionsType.edit:
       return {
         ...state,  // берем старое состояние икопируем его в новое
@@ -58,6 +48,22 @@ export const todoReducer = (state = initialState, action: TodoActions) => {
           name: action.payload.name
         } : todo)
       };
+
+    case todoActionsType.delete:
+      return {
+        ...state,
+        todoList: state.todoList.filter(todo => todo.id !== action.payload.id),  // избавляемся от записей которыые совпадают по id
+      }
+    case todoActionsType.load:
+      return{
+        ...action.payload.state
+      };
+    default:
+      return state;
+
+
+
+
 
 
   }
