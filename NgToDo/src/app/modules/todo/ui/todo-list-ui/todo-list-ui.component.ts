@@ -7,27 +7,38 @@ import {Todo} from "../../model/todo";
   styleUrls: ['./todo-list-ui.component.css']
 })
 export class TodoListUiComponent implements OnInit {
-
+editIds: number[] = [];
 
   @Input()
-  todoList: Todo[]=[]
+  todoList: Todo[] = []
 
   @Output()
   delete = new EventEmitter<number>();
   @Output()
   toggle = new EventEmitter<number>();
+  @Output()
+  edit = new EventEmitter<{ id: number, name: string }>();
 
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
+onEditMode(id: number){  //удали этот компонент и нарисуй другой вместо меня
+    this.editIds.push(id)
+}
 
-  onDelete(id: number){
+  onDelete(id: number) {
     this.delete.emit(id)
   }
-  onToggle(event, id: number){
-    event.preventDefault();
+
+  onToggle(id: number) {
     this.toggle.emit(id);
+  }
+
+  onEdit(name: string, id: number) {
+    this.editIds = this.editIds.filter(item => item !==id);
+    this.edit.emit({id, name})
   }
 }

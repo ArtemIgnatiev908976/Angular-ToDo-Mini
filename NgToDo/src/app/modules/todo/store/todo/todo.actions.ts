@@ -3,6 +3,7 @@ export enum todoActionsType  {
   create ='[TODO] create todo item',    //когда будут происходить action в консоли я буду знать какой модуль отвечат за них
   toggle ='[TODO] toggle todo item',
   delete ='[TODO] delete todo item',
+  edit ='[TODO] edit todo item',
 }
 
 
@@ -29,4 +30,12 @@ export  class TodoToggleAction implements Action {
   }
 }
 
-export type TodoActions = TodoCreateAction | TodoDeleteAction | TodoToggleAction;
+
+export  class TodoEditAction implements Action {
+  readonly type = todoActionsType.edit;
+  constructor(public payload:{id: number, name: string}) {
+
+  }
+}
+
+export type TodoActions = TodoCreateAction | TodoDeleteAction | TodoToggleAction | TodoEditAction ;
