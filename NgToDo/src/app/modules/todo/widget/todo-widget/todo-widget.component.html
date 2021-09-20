@@ -2,4 +2,8 @@
 
 
 <app-todo-create-form-ui (create)="onCreate($event)"></app-todo-create-form-ui>
-<app-todo-list-ui [todoList]="todoList$ | async"></app-todo-list-ui>
+<app-todo-list-ui
+  [todoList]="todoList$ | async"
+  (delete)="onDelete($event)"
+  (toggle)="onToggle($event)"
+></app-todo-list-ui>

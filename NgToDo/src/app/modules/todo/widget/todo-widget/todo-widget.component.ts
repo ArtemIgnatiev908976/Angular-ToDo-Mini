@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {select, Store} from "@ngrx/store";
 import {TodoState} from "../../store/todo/todo.reducer";
-import {TodoCreateAction} from "../../store/todo/todo.actions";
+import {TodoCreateAction, TodoDeleteAction, TodoToggleAction} from "../../store/todo/todo.actions";
 import {todoListSelector} from "../../store/todo/todo.selectors";
 import {Observable} from "rxjs";
 import {Todo} from "../../model/todo";
@@ -23,4 +23,11 @@ onCreate(name: string){
   console.log(name)
   this.store$.dispatch(new TodoCreateAction({name}));
 }
+
+onDelete(id:number){
+this.store$.dispatch(new TodoDeleteAction({id}));
+}
+  onToggle(id:number){
+    this.store$.dispatch(new TodoToggleAction({id}));
+  }
 }

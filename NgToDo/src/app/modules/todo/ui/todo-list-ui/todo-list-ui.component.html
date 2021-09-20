@@ -2,10 +2,10 @@
 <!--  из туду листов извлекам все тудушки-->
   <li *ngFor="let todo of todoList">
     <label>
-      <input type="checkbox" [checked]="todo.completed">
+      <input type="checkbox" [checked]="todo.completed" (click)="onToggle($event, todo.id)">
       <del *ngIf="todo.completed"><span>{{todo.name}}</span></del>
       <span *ngIf="!todo.completed">{{todo.name}}</span>
-
+      <span (click)="onDelete(todo.id)">Delete</span>
     </label>
   </li>
 </ul>
