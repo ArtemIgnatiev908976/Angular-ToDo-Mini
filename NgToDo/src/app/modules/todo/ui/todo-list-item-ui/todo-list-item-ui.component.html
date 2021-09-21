@@ -1,12 +1,37 @@
-<label>
-  <input type="checkbox" [checked]="todo.completed" (click)="onToggle($event)">
-  <del *ngIf="todo.completed"><span>{{todo.name}}</span></del>
-  <span *ngIf="!todo.completed">{{todo.name}}</span>
-</label>
+<!--<label>-->
 
-<span (click)="onEdit()">Edit</span>
-<span (click)="onDelete()">Delete</span>
+<!--&lt;!&ndash;  <del *ngIf="todo.completed"><span>{{todo.name}}</span></del>&ndash;&gt;-->
+<!--&lt;!&ndash;  <span *ngIf="!todo.completed">{{todo.name}}</span>&ndash;&gt;-->
+<!--</label>-->
+
+<!--<span (click)="onEdit()">Edit</span>-->
+<!--<span (click)="onDelete()">Delete</span>-->
 
 
+<li class="list-group-item">
 
+  <div class="todo-indicator bg-primary"></div>
+  <div class="widget-content p-0">
+    <div class="widget-content-wrapper">
+      <div class="widget-content-left mr-2">
+        <div class="custom-checkbox custom-control">
+          <input class="check-box-craft"   type="checkbox" [checked]="todo.completed" (click)="onToggle($event)">
+        </div>
+      </div>
+      <div class="widget-content-left flex2">
+        <del>
+          <div class="widget-heading" *ngIf="todo.completed">{{todo.name}}</div>
+        </del>
+       <span>
+         <div class="widget-heading" *ngIf="!todo.completed">{{todo.name}}</div>
+       </span>
+      </div>
+      <div class="widget-content-right">
+        <button class="border-0 btn-transition btn btn-outline-success" (click)="onEdit()"><i class="fa fa-pencil"></i></button>
+        <button class="border-0 btn-transition btn btn-outline-danger" (click)="onDelete()"><i class="fa fa-trash"></i></button>
+      </div>
+    </div>
+  </div>
+
+</li>
 
